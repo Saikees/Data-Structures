@@ -95,7 +95,27 @@ int main()
 		cin  >> newtype;
 
 		temp = myTable->set(newname, newtype, newvalue);
-
+	
+		if (temp == 0)
+		{ 
+		cout << endl << "****************************************" 
+		     << endl << "The symbol '" << newname 
+		     << "' was successfully found and modified!" << endl; 
+		}
+		else if (temp == 1)
+		{
+		cout << endl << "The list is empty!" << endl;
+		}
+		else if (temp == 2)
+		{
+		cout << endl << "The symbol '" << newname 
+		     << "' already exists." << endl;
+		}
+		else 
+		{ 
+		cout << "You broke the system! Remember: fail better." << endl; 
+		}
+		
 		break;
 	
 	  case 3:	// drop a symbol from the table
