@@ -5,6 +5,8 @@ Basic C++ programs to practice commenting, linked lists, encapsulation, and usin
 
 Program #1 - build a linked list for a symbol table. allow the user to add, modify, remove, and display information for a single symbol; also allow a 'display all'. 
 
+Program #2 - develop application for "CS Airways" to automate the boarding process. Use queues for entering each aircraft and confirming purchase of a ticket. Use stacks to automate the loading/unloading process.   
+
 All programs here are licensed under the Creative Commons 3.0 with the stipulation that attribution must include a link to http://github.com/wicker/
 
 http://creativecommons.org/licenses/by-sa/3.0/
