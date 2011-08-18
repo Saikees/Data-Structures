@@ -90,9 +90,9 @@ int main()
 		     << endl << "What's the name of this symbol? ";
 		cin  >> newname;
 		cout << "What's the new type? ";
-		cin  >> newvalue;
-		cout << "What's the new value? ";
 		cin  >> newtype;
+		cout << "What's the new value? ";
+		cin  >> newvalue;
 
 		temp = myTable->set(newname, newtype, newvalue);
 	
@@ -108,12 +108,15 @@ int main()
 		}
 		else if (temp == 2)
 		{
-		cout << endl << "The symbol '" << newname 
-		     << "' already exists." << endl;
+		cout << endl << "The symbol wasn't found. Please add it." << endl;
+		}
+		else if (temp == 3)
+		{
+		cout << endl << "There was an error. Please try again." << endl;
 		}
 		else 
 		{ 
-		cout << "You broke the system! Remember: fail better." << endl; 
+		cout << "The symbol wasn't found." << endl; 
 		}
 		
 		break;
@@ -133,7 +136,7 @@ int main()
 		else 
 		{
 		cout << "The symbol '" << nametodrop << "' could not be removed." << endl
-		     << "Are you sure you entered the name correctly? Please try again." << endl;
+		     << "Are you sure you entered the name correctly?" << endl;
 		}
 		break;
 

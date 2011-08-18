@@ -158,6 +158,8 @@ int symbolTable::drop(char * nametodrop)
 	}
 	else if (current->compare(*symtodrop) == 0)
 	{
+		head = head->next;
+		delete current;
 		return 0;
 	}
 	else if (find(current->next, symtodrop) == 0)
@@ -167,7 +169,7 @@ int symbolTable::drop(char * nametodrop)
 		delete temp;
 		return 0;
 	}
-	else if (find(current->next, symtodrop) == 1)
+	else if (find(current->next, symtodrop) != 0)
 	{
 		return 1;
 	}
@@ -241,35 +243,46 @@ int symbolTable::set(char * newname, char * newtype, char * newvalue)
 
 	if (!current) 
 	{ 
-		return 1; // clean up error messages here
+		return 1; // "list is empty"
 	}
+
+	while (find(current, symtoset) != 0 && current)
+	{
+		current = current->next;
+	}
+
+	if (!current)
+	{
+		return 2; // "symbol name not found"
+	}
+
 	else if (find(current, symtoset) == 0)
 	{
 		if (current->set(*symtoset) == 0)
 		{
-		return 0;  // clean up error messages here
+			return 0;  // "symbol successfully changed"
 		}
 		else
 		{
-		return 1;  // here as well
+			return 3;  // "there was a failure"
 		}
 	}
 	else if (find(current, symtoset) == 1)
 	{
-		return 1;  // here as well
+		return 3;  // here as well
 	}
 }
 
-int symbolTable::find(node * & here, node * symtodrop) 
+int symbolTable::find(node * & current, node * symtodrop) 
 {
-	int rVal = 1;
-	if (here)
+	int status = 1;
+	if (current)
 	{
-		rVal = here->compare(*symtodrop);
-		if (rVal == 1) 
+		status = current->compare(*symtodrop);
+		if (status == 1) 
 		{
-		return find(here->next, symtodrop);
+		return find(current->next, symtodrop);
 		}
 	}
-	return rVal; // return 0;
+	return status; 
 }
